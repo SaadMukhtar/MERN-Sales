@@ -37,4 +37,4 @@ if (orderItems && orderItems.length === 0) {
   res.status(201);.json(createdOrder)
 }
 
-export  {addOrderItems}
+export default { addOrderItems }
