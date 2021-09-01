@@ -96,10 +96,29 @@ const getOrders = asyncHandler(async (req, res) => {
   res.json(orders);
 });
 
+// @desc    Update Order to Delivered
+// @route   GET /api/orders/:id/deliver
+// @acccess Private/Admin
+const updateOrderToDelivered = asyncHandler(async (req, res) => {
+  const order = await Order.findById(req.params.id);
+
+  if (order) {
+    order.isDelivered = true;
+    order.deliveredAt = Date.now();
+  } else {
+    res.status(404);
+    throw new Error("Order not found");
+  }
+
+  const updatedOrder = order.save();
+  res.json(updatedOrder);
+});
+
 export {
   addOrderItems,
   getOrderById,
   updateOrderToPaid,
   getMyOrders,
   getOrders,
+  updateOrderToDelivered,
 };
