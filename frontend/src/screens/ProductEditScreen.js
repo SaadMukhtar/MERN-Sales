@@ -5,7 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
 import FormContainer from "../components/FormContainer";
-import { listProductsDetails } from "../actions/productAction";
+import { listProductsDetails, updateProduct } from "../actions/productAction";
+import { PRODUCT_UPDATE_RESET } from "../constants/productConstants";
 
 const ProductEditScreen = ({ match, history }) => {
   const productId = match.params.id;
@@ -22,30 +23,46 @@ const ProductEditScreen = ({ match, history }) => {
   const productDetails = useSelector((state) => state.productDetails);
   const { product, error, loading } = productDetails;
 
-  const userUpdate = useSelector((state) => state.userUpdate);
+  const productUpdate = useSelector((state) => state.productUpdate);
   const {
     success: successUpdate,
     error: errorUpdate,
     loading: loadingUpdate,
-  } = userUpdate;
+  } = productUpdate;
 
   useEffect(() => {
-    if (!product || product._id !== productId) {
-      dispatch(listProductsDetails(productId));
+    if (successUpdate) {
+      dispatch({ type: PRODUCT_UPDATE_RESET });
+      history.push("/admin/productlist");
     } else {
-      setName(product.name);
-      setPrice(product.price);
-      setImage(product.image);
-      setBrand(product.brand);
-      setCategory(product.category);
-      setCountInStock(product.countInStock);
-      setDescription(product.description);
+      if (!product || product._id !== productId) {
+        dispatch(listProductsDetails(productId));
+      } else {
+        setName(product.name);
+        setPrice(product.price);
+        setImage(product.image);
+        setBrand(product.brand);
+        setCategory(product.category);
+        setCountInStock(product.countInStock);
+        setDescription(product.description);
+      }
     }
   }, [history, dispatch, product, productId, successUpdate]);
 
   const submithandler = (e) => {
     e.preventDefault();
-    // UPDATE PRODUCT
+    dispatch(
+      updateProduct({
+        _id: product._id,
+        name,
+        price,
+        image,
+        brand,
+        category,
+        countInStock,
+        description,
+      })
+    );
   };
 
   return (
