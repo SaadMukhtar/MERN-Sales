@@ -5,7 +5,7 @@
   "main": "server.js",
   "type": "module",
   "engines": {
-    "node": "14.17.5"
+    "node": ">=14.17.0"
   },
   "scripts": {
     "start": "node backend/server",
