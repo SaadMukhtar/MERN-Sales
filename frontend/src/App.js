@@ -33,16 +33,27 @@ const App = () => {
           <Route path="/shipping" component={ShippingScreen} />
           <Route path="/placeorder" component={PlaceOrderScreen} />
           <Route path="/cart/:id?" component={CartScreen} />
-          <Route path="/" component={HomeScreen} exact />
-          <Route path="/search/:keyword" component={HomeScreen} />
-          <Route path="/payment" component={PaymentScreen} />
-          <Route path="/order/:id" component={OrderScreen} />
-          <Route path="/admin/userlist" component={UserListScreen} />
-          <Route path="/admin/productlist" component={ProductListScreen} />
-          <Route path="/admin/user/:id/edit" component={UserEditScreen} />
-          <Route path="/admin/product/:id/edit" component={ProductEditScreen} />
-          <Route path="/admin/orderlist" component={OrderListScreen} />
+          <Route path="/" component={HomeScreen} exact />{" "}
+          <Route path="/page/:pageNumber" component={HomeScreen} exact />
+          <Route
+            path="/search/:keyword/page/:pageNumber"
+            component={HomeScreen}
+            exact
+          />
         </Container>
+        <Route path="/search/:keyword" component={HomeScreen} exact />
+        <Route path="/payment" component={PaymentScreen} />
+        <Route path="/order/:id" component={OrderScreen} />
+        <Route path="/admin/userlist" component={UserListScreen} />
+        <Route path="/admin/productlist" component={ProductListScreen} exact />
+        <Route
+          path="/admin/productlist/:pageNumber"
+          component={ProductListScreen}
+          exact
+        />
+        <Route path="/admin/user/:id/edit" component={UserEditScreen} />
+        <Route path="/admin/product/:id/edit" component={ProductEditScreen} />
+        <Route path="/admin/orderlist" component={OrderListScreen} />
       </main>
       <Footer />
     </Router>
