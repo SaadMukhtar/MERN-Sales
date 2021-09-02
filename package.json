@@ -1,11 +1,11 @@
 {
   "name": "proshop",
   "version": "1.0.0",
-  "description": "MERN shopping cart app",
+  "description": "MERN",
   "main": "server.js",
   "type": "module",
   "engines": {
-    "node": ">=14.17.0"
+    "node": "14.17.0"
   },
   "scripts": {
     "start": "node backend/server",
@@ -16,7 +16,7 @@
     "data:destroy": "node backend/seeder -d",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
   },
-  "author": "Brad Traversy",
+  "author": "Saad Mukhtar",
   "license": "MIT",
   "dependencies": {
     "bcryptjs": "^2.4.3",
