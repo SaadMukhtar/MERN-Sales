@@ -25,3 +25,5 @@ https://mern-sales.herokuapp.com/
 <img src="https://github.com/SaadMukhtar/MERN-Sales/blob/master/screenshots/adminProfile.png">
 
 <img src="https://github.com/SaadMukhtar/MERN-Sales/blob/master/screenshots/productList.png">
+
+Credits also given to TraversyMedia!
