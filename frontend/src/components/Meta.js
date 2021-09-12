@@ -12,8 +12,8 @@ const Meta = ({ title, description, keywords }) => {
 };
 
 Meta.defaultProps = {
-  title: "Welcome to 6ixSneakers!",
-  keywords: "Buy limited edition, high quality sneakers!",
+  title: "Welcome to MERN-Sales!",
+  keywords: "Buy limited editions items here first!",
   description: "Best products for cheap!",
 };
 
